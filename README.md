@@ -1,2 +1,2 @@
 # TP_Programmation_Concurente
-Dépôt des TP de la matière programmation concurente
+Pour ce dépôt, les TP enregistrés sous la forme "fichiers.txt"
