@@ -1,0 +1,66 @@
+#*************************************** TP 04 Sarah KADI **************************************************
+from math import *
+import time
+from threading import Thread
+from multiprocessing import Process
+
+#*************************************** Excercice 01: Multithreading: *************************************
+
+class Square(Thread):
+    def __init__(self, nombres):
+        Thread.__init__(self)
+        self.nombres = nombres
+
+    def run(self):
+        for i in range (len(self.nombres)):
+            self.nombres[i] = pow(self.nombres[i],2)
+        for i in range(5) :
+            print(self.nombres)
+            time.sleep(0.5)
+
+class Cube(Thread):
+    def __init__(self, nombres):
+        Thread.__init__(self)
+        self.nombres = nombres
+
+    def run(self):
+        for i in range (len(self.nombres)):
+            self.nombres[i] = pow(self.nombres[i],3)
+        i = 0
+        for i in range(5) :
+            print(self.nombres)
+            time.sleep(0.5)
+
+#Création des Threads : 
+thread_square = Square([2, 3, 8, 9, 12])
+thread_cube = Cube([2, 3, 8, 9, 12])
+
+#Lancement des threads:
+thread_square.start()
+thread_cube.start()
+
+#Attente de la fin des threads:
+thread_square.join()
+thread_cube.join()
+
+
+#*************************************** Excercice 02: Multiprocessing: *************************************
+
+def calcul_square(nombres):
+    for i in range (len(nombres)):
+        nombres[i] = pow(nombres[i],2)
+        #for i in range(5) :
+    print(nombres)
+
+def calcul_cube(nombres):
+    for i in range (len(nombres)):
+        nombres[i] = pow(nombres[i],3)
+        #for i in range(5) :
+    print(nombres)
+
+if __name__ == '__main__':
+    nombres = [2, 3, 8, 9, 12]
+    process = Process(target=calcul_square, args=(nombres,))
+    process.start()
+    process2 = Process(target=calcul_cube, args=(nombres,))
+    process2.start()

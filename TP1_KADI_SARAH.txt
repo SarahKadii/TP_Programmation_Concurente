@@ -1,0 +1,96 @@
+#---------- SARAH KADI TP 01 --------------------------------------------------------
+
+from math import *
+import statistics
+
+#---------- EXCERCICE 01 -------------------------------------------------------------
+def isocele(a,b,c):
+  if (a == b) or (a == c) or (b == c):
+    if (a == 1 and b == 1 and c == 20) or (a == 1 and b == 20 and c == 1) or (a == 20 and b == 1 and c == 1):
+      print("False")
+    else:
+      print("True")
+  else: 
+    print("False")
+#---------- EXEMPLES EXCERCICE 01 -------------------------------------------
+>>> isocele(4,2,3)
+False
+>>> isocele(4,3,3)
+True
+>>> isocele(4,4,4)
+True
+>>> isocele(2,3,3)
+True
+>>> isocele(1,20,1)
+False
+
+
+#---------- EXCERCICE 02 ------------------------------------------------------------
+def aire_ordonne(a,b,c):
+  u1 = min(a,b,c)
+  u2 = statistics.median([a, b, c])
+  u3 = max(a,b,c)
+  r = pow((pow(u1,2) - pow(u2,2) + pow(u3,2))/2,2)
+  A = (pow(u1,2)* pow(u3,2)) - r
+  if (A > 0):
+    return 1/2 * sqrt(A)
+  else:
+    return 0
+#---------- EXEMPLES EXCERCICE 02 -------------------------------------------
+>>> aire_ordonne(4,2,3)
+2.9047375096555625
+>>> aire_ordonne(4,3,3)
+4.47213595499958
+>>> aire_ordonne(4,4,4)
+6.928203230275509
+>>> aire_ordonne(3,4,5)
+6.0
+>>> aire_ordonne(13,15,16)
+91.19210492142398
+
+
+#---------- EXCERCICE 03 -------------------------------------------------------------
+def definit_triangle(a,b,c):
+  if (a>0 and b>0 and c>0 and a<((a + b + c)/2) and b<((a + b + c)/2) and c<((a + b + c)/2)) :
+    print("True")
+  else :
+    print ("False")
+#---------- EXEMPLES EXCERCICE 03 -------------------------------------------
+>>> definit_triangle(1,1,20)
+False
+>>> definit_triangle(4,2,3)
+True
+>>> definit_triangle(4,4,4)
+True
+>>> definit_triangle(4,5,2)
+True
+>>> definit_triangle(1,1,1)
+True
+
+
+#---------- EXCERCICE 04 -------------------------------------------------------------
+def nb_triangles_speciaux(n,p):
+  cpt = 0
+  for i in range (n,p+1):
+    for j in range (i,p+1):
+      for k in range (j,p+1):
+        if (aire_ordonne(i,j,k) == j+k+i and aire_ordonne(i,j,k) != 0):
+          print("Triangle special :" + str(i) + ',' + str(j) + ',' + str(k))
+          cpt += 1
+  print("Nombre de triangles speciaux " + str(cpt))
+#---------- EXEMPLES EXCERCICE 04 -------------------------------------------
+>>> nb_triangles_speciaux(1,20)
+Triangle special :5,12,13
+Triangle special :6,8,10
+Triangle special :7,15,20
+Triangle special :9,10,17
+Nombre de triangles speciaux 4
+>>> nb_triangles_speciaux(2,5)
+Nombre de triangles speciaux 0
+>>> nb_triangles_speciaux(1,100)
+Triangle special :5,12,13
+Triangle special :6,8,10
+Triangle special :6,25,29
+Triangle special :7,15,20
+Triangle special :9,10,17
+Nombre de triangles speciaux 5

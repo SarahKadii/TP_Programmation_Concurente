@@ -1,0 +1,66 @@
+#---------- SARAH KADI TP 03 --------------------------------------------------------
+
+from math import*
+#Exercice 1
+def compte_mots(str):
+  print(len(str.split()))
+  
+#Exercice 3
+print("Exercice 3 tp3")
+def termU(n):
+    U0 = 1
+    un = 0
+    if n == 0:
+        return (1)
+    else:
+        return ( termU(n-1) * pow(2, n) + n)
+print(termU(0))
+print(termU(1))
+print(termU(5))
+print(termU(10))
+print(termU(15))
+
+#Exercice 4
+def serie(n):
+    s = 0
+    i = 0
+    for i in range(n+1):
+        s = s + termU(i)
+    return (s)
+print(serie(0))
+print(serie(1))
+print(serie(5))
+print(serie(10))
+print(serie(15))
+
+#Exercice 5
+def serie_v(n):
+    u0 = 1
+    u_index = u0
+    s = 0
+    for i in range(n+1):
+        u_index = u_index * pow(2,i) + i
+        s = s + u_index
+    return (s)
+
+print(serie_v(0))
+print(serie_v(1))
+print(serie_v(5))
+print(serie_v(10))
+print(serie_v(15))
+def temps():
+    depart = time.time()
+    serie(300)
+    arrivee = time.time()
+    print("temps passe en secondes: ", arrivee - depart)
+
+#Exercice 6
+temps()
+def temps2():
+    depart = time.time()
+    serie_v(300)
+    arrivee = time.time()
+    print("temps passe en secondes: ", arrivee - depart)
+
+temps2()
+print("la 2 et plus performante que la 1 ere")
